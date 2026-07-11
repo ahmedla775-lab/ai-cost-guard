@@ -1,3 +1,4 @@
+const supabase = require("./supabase");
 const { calculateCost } = require("./costCalculator");
 const express = require("express");
 const cors = require("cors");
@@ -18,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.post("/api/analyze", (req,res)=>{
+app.post("/api/analyze", async (req,res)=>{
 
   const {prompt, model} = req.body;
 
@@ -40,7 +41,15 @@ app.post("/api/analyze", (req,res)=>{
       estimatedTokens
     );
 
-
+await supabase
+.from("api_requests")
+.insert({
+  model: model || "gpt-5",
+  input_tokens: estimatedTokens,
+  output_tokens: 0,
+  cost: cost.estimatedCost,
+  endpoint: "/api/analyze"
+});
   res.json({
 
     characters: prompt.length,
