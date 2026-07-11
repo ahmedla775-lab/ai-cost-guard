@@ -1,3 +1,4 @@
+const { calculateCost } = require("./costCalculator");
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -33,11 +34,21 @@ app.post("/api/analyze", (req,res)=>{
     Math.ceil(prompt.length / 4);
 
 
+  const cost =
+    calculateCost(
+      model || "gpt-5",
+      estimatedTokens
+    );
+
+
   res.json({
-    model: model || "unknown",
+
     characters: prompt.length,
+
     estimatedTokens,
-    message:"Analysis completed"
+
+    cost
+
   });
 
 });
