@@ -1,0 +1,14 @@
+{
+  "name": "ai-cost-guard",
+  "version": "1.0.0",
+  "description": "Middleware to monitor AI API usage and costs",
+  "main": "index.js",
+  "keywords": [
+    "ai",
+    "openai",
+    "cost",
+    "monitoring",
+    "gateway"
+  ],
+  "license": "MIT"
+}
