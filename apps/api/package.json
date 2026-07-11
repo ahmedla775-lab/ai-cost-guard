@@ -1,0 +1,15 @@
+{
+  "name": "ai-cost-guard-api",
+  "version": "1.0.0",
+  "description": "AI Gateway API for monitoring and optimizing AI costs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
